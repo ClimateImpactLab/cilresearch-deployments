@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+spec:
+  destination:
+    namespace: ingress-nginx
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 4.1.4
+    helm:
+      values: |
+        controller:
+          autoscaling:
+            enabled: true
+            minReplicas: 3
+            maxReplicas: 8
+  ignoreDifferences:
+  - group: autoscaling
+    kind: HorizontalPodAutoscaler
+    jsonPointers:
+    - /spec/metrics
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
