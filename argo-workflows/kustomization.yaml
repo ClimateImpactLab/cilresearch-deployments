@@ -3,9 +3,9 @@ kind: Kustomization
 
 resources:
   - https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/install.yaml
-  - argo-server-ingress.yaml
-  - letsencrypt-stage-issuer.yaml
-  - letsencrypt-prod-issuer.yaml
+  - resources/argo-server-ingress.yaml
+  - resources/letsencrypt-stage-issuer.yaml
+  - resources/letsencrypt-prod-issuer.yaml
 
 patchesJson6902:
   - target:
