@@ -1,0 +1,15 @@
+- op: add
+  path: /spec/template/spec/containers/0/args/-
+  value:
+    --auth-mode=sso
+- op: add
+  path: /spec/template/spec/containers/0/args/-
+  value:
+    --auth-mode=client
+- op: replace
+  path: /spec/replicas
+  value: 1
+- op: add
+  path: /spec/template/spec/containers/0/resources
+  value:
+    { "requests": { "cpu": "0.1", "memory": "300Mi"}, "limits": { "cpu": "1", "memory": "500Mi"} }

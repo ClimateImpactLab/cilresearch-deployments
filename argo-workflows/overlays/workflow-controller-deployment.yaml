@@ -1,0 +1,7 @@
+- op: add
+  path: /spec/template/spec/containers/0/resources
+  value:
+    { "requests": { "cpu": "1", "memory": "4Gi"}, "limits": { "cpu": "4", "memory": "14Gi"} }
+- op: replace
+  path: /spec/replicas
+  value: 1

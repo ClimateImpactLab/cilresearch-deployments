@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/install.yaml
+  - argo-server-ingress.yaml
+  - letsencrypt-stage-issuer.yaml
+  - letsencrypt-prod-issuer.yaml
+
+patchesJson6902:
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: argo-server
+    path: overlays/argo-server-deployment.yaml
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: workflow-controller
+    path: overlays/workflow-controller-deployment.yaml
+
+patchesStrategicMerge:
+  - overlays/workflow-controller-configmap.yaml
