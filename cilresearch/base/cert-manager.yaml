@@ -10,3 +10,4 @@ spec:
   source:
     path: cert-manager
     repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
+    targetRevision: HEAD
