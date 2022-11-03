@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.8.2/cert-manager.yaml
+  - resources/letsencrypt-prod-clusterissuer.yaml
+  - resources/letsencrypt-staging-clusterissuer.yaml
 
 patchesStrategicMerge:
   - overlays/cert-manager-sa.yaml
