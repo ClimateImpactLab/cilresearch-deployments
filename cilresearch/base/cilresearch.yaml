@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cilresearch
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: cilresearch
+    repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
+    targetRevision: HEAD
+  spec:
+    syncPolicy:
+      automated:
+        prune: true
