@@ -6,6 +6,8 @@ Daskhub-flavored Jupyterhub deployment configuration for argocd.
 
 Unlike the other deployments in this repository, daskhub requires special attention.
 
+If daskhub is already deployed and managed by ArgoCD, then changes here will sync and deploy into the cluster within a matter of minutes.
+
 If daskhub does not already exist on the cluster, and is not managed by ArgoCD, you will need to manually add the application to ArgoCD. This is unlike other deployments. We need to do initial deployment manually because of the way that daskhub handles secret and sensitive parameters.
 
 First, you need to ensure that you have `argocd` CLI installed and configured for the cluster. If you open a terminal and type `argocd app list` you should see an updated list of live deployments.
