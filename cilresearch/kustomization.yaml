@@ -5,4 +5,5 @@ resources:
   - base/argo-cd.yaml
   - base/cert-manager.yaml
   - base/cilresearch.yaml
+  - base/external-secrets.yaml
   - base/ingress-nginx.yaml
