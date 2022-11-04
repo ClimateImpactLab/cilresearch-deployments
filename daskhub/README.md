@@ -18,10 +18,10 @@ argocd app create daskhub \
     --revision "HEAD" \
     --path daskhub \
     --values daskhub/values.yaml \
-    --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_id=$(gcloud secrets versions access latest --secret="jhub_github_client_id") \
-    --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_secret=$(gcloud secrets versions access latest --secret="jhub_github_client_secret") \
-    --parameter daskhub.jupyterhub.hub.services.dask-gateway.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token") \
-    --parameter daskhub.dask-gateway.gateway.auth.jupyterhub.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token") \
+    --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_id=$(gcloud secrets versions access latest --secret="jhub_github_client_id" --project cilresearch) \
+    --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_secret=$(gcloud secrets versions access latest --secret="jhub_github_client_secret" --project cilresearch) \
+    --parameter daskhub.jupyterhub.hub.services.dask-gateway.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token" --project cilresearch) \
+    --parameter daskhub.dask-gateway.gateway.auth.jupyterhub.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token" --project cilresearch) \
     --dest-server https://kubernetes.default.svc \
     --dest-namespace "jhub" \
     --sync-policy automated \
