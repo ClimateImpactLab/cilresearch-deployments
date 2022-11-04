@@ -1,0 +1,76 @@
+daskhub:
+  # daskhub Helm chart values.
+  # This config is based off of the approach used by the Pangeo cloud deployments
+  # (https://github.com/pangeo-data/pangeo-cloud-federation)
+  jupyterhub:
+    prePuller:
+      hook:
+        enabled: false
+      continuous:
+        enabled: false
+    singleuser:
+      # see https://jupyterhub-kubespawner.readthedocs.io/en/latest/spawner.html for a
+      # description of configuration options
+      image:
+        name: pangeo/pangeo-notebook
+        tag: "2022.10.31"
+      startTimeout: 600
+      storage:
+        capacity: 10Gi
+      cpu:
+        limit: 7
+        guarantee: 7
+      memory:
+        limit: 45G
+        guarantee: 45G
+      cloudMetadata:
+        blockWithIptables: false
+      serviceAccountName: jhubuser
+      extraEnv:
+        CIL_SCRATCH_PREFIX: "gs://impactlab-data-scratch"
+        CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
+
+    hub:
+      resources:
+        requests:
+          cpu: "0.25"
+          memory: 0.5Gi
+        limits:
+          cpu: "1.25"
+          memory: 1Gi
+      config:
+        Authenticator:
+          admin_users:
+            - delgadom
+        JupyterHub:
+          admin_access: true
+          authenticator_class: github
+        GitHubOAuthenticator:
+          oauth_callback_url: "https://notebooks.cilresearch.org/hub/oauth_callback"
+          allowed_organizations:
+            - ClimateImpactLab
+        OAuthenticator:
+          scope:
+            - read:user
+    scheduling:
+      userScheduler:
+        enabled: true
+      userPlaceholder:
+        enabled: false
+      userPods:
+        nodeAffinity:
+          matchNodePurpose: require
+      corePods:
+        nodeAffinity:
+          matchNodePurpose: require
+    cull:
+      timeout: 259200
+
+    proxy:
+      https:
+        enabled: true
+        type: secret
+        secret:
+          name: jhub-com-tls
+        hosts:
+          - "notebooks.cilresearch.org"
