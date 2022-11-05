@@ -4,7 +4,6 @@ metadata:
   name: argocd-cm
 data:
   application.resourceTrackingMethod: annotation
-  users.anonymous.enabled: 'true'
   admin.enabled: 'false'
   statusbadge.enabled: 'true'
   url: https://cd.cilresearch.org
