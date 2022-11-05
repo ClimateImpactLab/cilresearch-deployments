@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: argocd
 resources:
-  - resources/argocd-ui-ingress.yaml
+  - resources/argocd-server-ingress.yaml.yaml
   - resources/cilresearch-secretstore.yaml
   - resources/letsencrypt-prod-issuer.yaml
   - resources/sso-client-externalsecret.yaml
