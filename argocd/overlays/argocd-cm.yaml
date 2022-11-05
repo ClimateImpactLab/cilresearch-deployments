@@ -13,7 +13,7 @@ data:
       id: github
       name: GitHub
       config:
-        clientID: $sso-client.dex.github.clientId
-        clientSecret: $sso-client.dex.github.clientSecret
+        clientID: $sso-client:dex.github.clientId
+        clientSecret: $sso-client:dex.github.clientSecret
         orgs:
         - name: ClimateImpactLab
