@@ -10,4 +10,4 @@ spec:
   source:
     path: argocd
     repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
-    targetRevision: ha_argocd
+    targetRevision: HEAD
