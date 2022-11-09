@@ -6,6 +6,8 @@ resources:
   - resources/argo-server-ingress.yaml
   - resources/letsencrypt-stage-issuer.yaml
   - resources/letsencrypt-prod-issuer.yaml
+  - resources/argo-workflows-sso-externalsecret.yaml
+  - resources/cilresearch-secretstore.yaml
 
 patchesJson6902:
   - target:

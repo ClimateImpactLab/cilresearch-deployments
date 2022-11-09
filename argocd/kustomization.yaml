@@ -3,6 +3,7 @@ kind: Kustomization
 
 namespace: argocd
 resources:
+  - resources/argo-workflows-sso-externalsecret.yaml
   - resources/argocd-server-ingress.yaml
   - resources/cilresearch-secretstore.yaml
   - resources/letsencrypt-prod-issuer.yaml
@@ -10,5 +11,6 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.1/manifests/ha/install.yaml
 
 patchesStrategicMerge:
+  - overlays/argocd-dex-server-deployment.yaml
   - overlays/argocd-cm.yaml
   - overlays/argocd-rbac-cm.yaml

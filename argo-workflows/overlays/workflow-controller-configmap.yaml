@@ -101,6 +101,23 @@ data:
         cpu: 500m
         memory: 1Gi
 
+  sso: |
+    # This is the root URL of the OIDC provider (required).
+    issuer: https://cd.cilresearch.org/api/dex
+    # This is name of the secret and the key in it that contain OIDC client
+    # ID issued to the application by the provider (required).
+    clientId:
+      name: argo-workflows-sso
+      key: client-id
+    # This is name of the secret and the key in it that contain OIDC client
+    # secret issued to the application by the provider (required).
+    clientSecret:
+      name: argo-workflows-sso
+      key: client-secret
+    # This is the redirect URL supplied to the provider (required). It must
+    # be in the form <argo-server-root-url>/oauth2/callback. It must be
+    # browser-accessible.
+    redirectUrl: https://workflows.cilresearch.org/oauth2/callback
 
   links: |
     - name: GCP Workflow Logs
