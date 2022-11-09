@@ -11,3 +11,6 @@ spec:
     path: cert-manager
     repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

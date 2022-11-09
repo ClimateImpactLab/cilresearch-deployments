@@ -26,6 +26,7 @@ argocd app create daskhub \
     --parameter daskhub.dask-gateway.gateway.auth.jupyterhub.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token" --project cilresearch) \
     --dest-server https://kubernetes.default.svc \
     --dest-namespace "jhub" \
+    --sync-option CreateNamespace=true \
     --sync-policy automated \
     --auto-prune \
     --self-heal
