@@ -19,7 +19,7 @@ argocd app create daskhub \
     --repo https://github.com/ClimateImpactLab/cilresearch-deployments.git \
     --revision "HEAD" \
     --path daskhub \
-    --values daskhub/values.yaml \
+    --values values.yaml \
     --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_id=$(gcloud secrets versions access latest --secret="jhub_github_client_id" --project cilresearch) \
     --parameter daskhub.jupyterhub.hub.config.GitHubOAuthenticator.client_secret=$(gcloud secrets versions access latest --secret="jhub_github_client_secret" --project cilresearch) \
     --parameter daskhub.jupyterhub.hub.services.dask-gateway.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token" --project cilresearch) \
@@ -30,4 +30,5 @@ argocd app create daskhub \
     --sync-policy automated \
     --auto-prune \
     --self-heal
+
 ```
