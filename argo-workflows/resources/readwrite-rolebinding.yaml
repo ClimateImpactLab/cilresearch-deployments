@@ -8,4 +8,4 @@ roleRef:
   name: read-write
 subjects:
   - kind: ServiceAccount
-    name: ciluser
+    name: argouser

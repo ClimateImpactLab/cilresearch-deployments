@@ -1,7 +1,7 @@
 kind: ServiceAccount
 apiVersion: v1
 metadata:
-  name: ciluser
+  name: argouser
   annotations:
-    workflows.argoproj.io/rbac-rule: "'ClimateImpactLab' in groups"
+    workflows.argoproj.io/rbac-rule: "true"
     workflows.argoproj.io/rbac-rule-precedence: "1"

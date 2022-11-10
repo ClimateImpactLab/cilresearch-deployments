@@ -9,7 +9,7 @@ resources:
   - resources/argo-workflows-sso-externalsecret.yaml
   - resources/argo-postgres-config-externalsecret.yaml
   - resources/cilresearch-secretstore.yaml
-  - resources/ciluser-sa.yaml
+  - resources/argouser-sa.yaml
   - resources/readwrite-role.yaml
   - resources/readwrite-rolebinding.yaml
   - resources/workflow-rolebinding.yaml
