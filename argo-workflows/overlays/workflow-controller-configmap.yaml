@@ -35,7 +35,7 @@ data:
         secondsAfterCompletion: 604800   #; Workflows delete after 7 days.
       podGC:
         strategy: OnPodCompletion
-      serviceAccountName: workflows-default
+      serviceAccountName: workflow
       tolerations:
       - key: "dedicated"
         operator: "Equal"

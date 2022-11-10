@@ -9,6 +9,9 @@ resources:
   - resources/argo-workflows-sso-externalsecret.yaml
   - resources/argo-postgres-config-externalsecret.yaml
   - resources/cilresearch-secretstore.yaml
+  - resources/workflow-rolebinding.yaml
+  - resources/workflow-role.yaml
+  - resources/workflow-sa.yaml
 
 patchesJson6902:
   - target:
