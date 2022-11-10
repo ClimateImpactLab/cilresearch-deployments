@@ -118,6 +118,11 @@ data:
     # be in the form <argo-server-root-url>/oauth2/callback. It must be
     # browser-accessible.
     redirectUrl: https://workflows.cilresearch.org/oauth2/callback
+    scopes:
+    - groups
+    - emails
+    rbac:
+      enabled: true
 
   links: |
     - name: GCP Workflow Logs
