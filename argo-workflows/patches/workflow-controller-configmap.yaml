@@ -128,7 +128,7 @@ data:
     - groups
     - email
     rbac:
-      enabled: false
+      enabled: true
 
   links: |
     - name: GCP Workflow Logs
