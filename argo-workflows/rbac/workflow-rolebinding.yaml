@@ -4,7 +4,7 @@ metadata:
   name: workflow
 subjects:
   - kind: ServiceAccount
-    name: workflows
+    name: workflow
 roleRef:
   kind: Role
   name: workflow
