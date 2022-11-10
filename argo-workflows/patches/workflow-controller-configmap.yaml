@@ -55,6 +55,12 @@ data:
                   values:
                     - "true"
 
+  artifactRepository: |
+    archiveLogs: true
+    gcs:
+      bucket: impactlab-data-scratch
+      keyFormat: "{{workflow.uid}}/{{pod.name}}"
+
   persistence: |
     connectionPool:
       maxIdleConns: 100
