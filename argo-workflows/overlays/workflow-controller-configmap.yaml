@@ -76,7 +76,7 @@ data:
     # Optional name of the cluster I'm running in. This must be unique for your cluster.
     clusterName: cilresearch
     postgresql:
-      host: 10.244.0.3
+      host: 10.236.0.3
       port: 5432
       database: postgres
       tableName: argo_workflows
