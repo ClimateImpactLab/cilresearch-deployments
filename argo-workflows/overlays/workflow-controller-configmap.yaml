@@ -120,7 +120,7 @@ data:
     redirectUrl: https://workflows.cilresearch.org/oauth2/callback
     scopes:
     - groups
-    - emails
+    - email
     rbac:
       enabled: false
 
