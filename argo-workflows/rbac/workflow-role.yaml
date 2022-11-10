@@ -4,6 +4,9 @@ metadata:
   name: workflow
 rules:
   # pod get/watch is used to identify the container IDs of the current pod
+  # pod patch is used to post outputs to pods annotations. Beware, this a security
+  # problem, potentially allowing workflows to raise hell within the namespace.
+  # Don't use with executed arbitrary code.
   - apiGroups:
       - ""
     resources:
@@ -11,6 +14,7 @@ rules:
     verbs:
       - get
       - watch
+      - patch
   # logs get/watch are used to get the pods logs for script outputs, and for log archival
   - apiGroups:
       - ""
