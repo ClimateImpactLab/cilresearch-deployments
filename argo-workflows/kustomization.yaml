@@ -3,18 +3,9 @@ kind: Kustomization
 
 resources:
   - https://github.com/argoproj/argo-workflows/releases/download/v3.4.3/install.yaml
-  - resources/argo-server-ingress.yaml
-  - resources/letsencrypt-stage-issuer.yaml
-  - resources/letsencrypt-prod-issuer.yaml
-  - resources/argo-workflows-sso-externalsecret.yaml
-  - resources/argo-postgres-config-externalsecret.yaml
-  - resources/cilresearch-secretstore.yaml
-  - resources/argouser-sa.yaml
-  - resources/readwrite-role.yaml
-  - resources/readwrite-rolebinding.yaml
-  - resources/workflow-rolebinding.yaml
-  - resources/workflow-role.yaml
-  - resources/workflow-sa.yaml
+  - ./ingress
+  - ./secrets
+  - ./rbac
 
 patchesJson6902:
   - target:
@@ -22,13 +13,13 @@ patchesJson6902:
       group: apps
       kind: Deployment
       name: argo-server
-    path: overlays/argo-server-deployment.yaml
+    path: patches/argo-server-deployment.yaml
   - target:
       version: v1
       group: apps
       kind: Deployment
       name: workflow-controller
-    path: overlays/workflow-controller-deployment.yaml
+    path: patches/workflow-controller-deployment.yaml
 
 patchesStrategicMerge:
-  - overlays/workflow-controller-configmap.yaml
+  - patches/workflow-controller-configmap.yaml
