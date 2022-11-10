@@ -19,3 +19,11 @@ rules:
     verbs:
       - get
       - watch
+  # Can get handle outputs without heavy 'pod patch' permissions
+  - apiGroups:
+      - argoproj.io
+    resources:
+      - workflowtaskresults
+    verbs:
+      - create
+      - patch
