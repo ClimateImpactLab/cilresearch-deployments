@@ -52,6 +52,17 @@ daskhub:
         OAuthenticator:
           scope:
             - read:user
+      extraConfig:
+        customPodHook: |
+          # runs container in privileged mode for FUSE mount access
+          from kubernetes_asyncio.client.models import V1SecurityContext, V1Capabilities
+          def modify_pod_hook(spawner, pod):
+              pod.spec.containers[0].security_context = V1SecurityContext(
+                  privileged=True,
+                  capabilities=V1Capabilities(add=['SYS_ADMIN'])
+              )
+              return pod
+          c.KubeSpawner.modify_pod_hook = modify_pod_hook
     scheduling:
       userScheduler:
         enabled: true
