@@ -29,66 +29,6 @@ daskhub:
       extraEnv:
         CIL_SCRATCH_PREFIX: "gs://impactlab-data-scratch"
         CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
-      profileList:
-        - display_name: "Base (latest)"
-          description: "Latest built of base image <a href=\"https://gitlab.com/rhodium/impactlab-rhg/climate_risk_service/onyx/infrastructure/jupyterlab-docker-images\">jupyterlab-docker-images@master</a>."
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:latest
-        - display_name: "Base v1.6.1"
-          description: "Bump clawpack version and catalyst_compute_tools."
-          default: true
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.6.1
-        - display_name: "Base v1.6"
-          description: "Bump daskhub->2022.4.0 and catalyst compute tools - include document_dataset utility."
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.6
-        - display_name: "Base v1.5"
-          description: "Bump catalyst_compute_tools, clawpack, climada, cloudpathlib, and other package updates."
-          default: true
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.5
-        - display_name: "Base v1.4"
-          description: "Minor updates to several packages"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.4
-        - display_name: "Base v1.0.1 (patched)"
-          description: "Scheduler version sync patch"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.0.1
-        - display_name: "Base v1.0"
-          description: "Initial release on onyx"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.0
-        - display_name: "Coastal (latest)"
-          description: "Latest built of coastal image <a href=\"https://gitlab.com/rhodium/impactlab-rhg/climate_risk_service/onyx/infrastructure/jupyterlab-docker-images\">jupyterlab-docker-images@master</a>."
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:coastal
-        - display_name: "Coastal v1.6.1"
-          description: "Bump clawpack version and catalyst_compute_tools."
-          default: true
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.6.1-coastal
-        - display_name: "Coastal v1.6"
-          description: "Bump daskhub->2022.4.0 and catalyst compute tools - include document_dataset utility."
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.6-coastal
-        - display_name: "Coastal v1.5"
-          description: "Bump catalyst_compute_tools, clawpack, climada, cloudpathlib, and other package updates."
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.5-coastal
-        - display_name: "Coastal v1.4"
-          description: "Climada back in pkg list, minor updates to other pkgs"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.4-coastal
-        - display_name: "Coastal v1.0.1 (patched)"
-          description: "Scheduler version sync patch"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.0.1-coastal
-        - display_name: "Coastal v1.0"
-          description: "Initial release on onyx"
-          kubespawner_override:
-            image: us-west1-docker.pkg.dev/onyx-324919/private/notebook:1.0-coastal
 
     hub:
       resources:
