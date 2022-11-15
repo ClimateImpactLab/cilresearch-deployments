@@ -29,6 +29,13 @@ daskhub:
       extraEnv:
         CIL_SCRATCH_PREFIX: "gs://impactlab-data-scratch"
         CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
+      profileList:
+        - display_name: "pangeo/pangeo-notebook:2022.11.03"
+          kubespawner_override:
+            image: pangeo/pangeo-notebook:2022.11.03
+        - display_name: "pangeo/pangeo-notebook:2022.10.31"
+          kubespawner_override:
+            image: pangeo/pangeo-notebook:2022.10.31
 
     hub:
       resources:
