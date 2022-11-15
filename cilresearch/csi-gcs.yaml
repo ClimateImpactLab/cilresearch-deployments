@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-gcs
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: csi-gcs
+    repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
+    targetRevision: HEAD
