@@ -1,6 +1,6 @@
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: gcs-bucket
+  name: scratch-bucket
 provisioner: gcs.csi.ofek.dev
 volumeBindingMode: WaitForFirstConsumer
