@@ -91,6 +91,17 @@ daskhub:
 
 dask-gateway:
   gateway:
+    backend:
+      worker:
+        extraPodConfig:
+          volumes:
+            - name: cil-scratch-bucket
+              persistentVolumeClaim:
+                claimName: scratch-bucket
+        extraContainerConfig:
+          volumeMounts:
+            - name: cil-scratch-bucket
+              mountPath: /gcs/impactlab-data-scratch
     extraConfig:
       optionHandler: |
         from dask_gateway_server.options import Options, String, Select, Mapping, Float
