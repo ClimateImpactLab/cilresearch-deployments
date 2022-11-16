@@ -89,136 +89,136 @@ daskhub:
         hosts:
           - "notebooks.cilresearch.org"
 
-dask-gateway:
-  gateway:
-    backend:
-      worker:
-        extraPodConfig:
-          volumes:
-            - name: cil-scratch-bucket
-              persistentVolumeClaim:
-                claimName: scratch-bucket
-        extraContainerConfig:
-          volumeMounts:
-            - name: cil-scratch-bucket
-              mountPath: /gcs/impactlab-data-scratch
-    extraConfig:
-      optionHandler: |
-        from dask_gateway_server.options import Options, String, Select, Mapping, Float
-        from math import ceil
-
-        def cluster_options(user):
-            standard_mem = 6.4
-            scaling_factors = {
-                "micro": 1,
-                "standard": 1.75,
-                "big": 3.5,
-                "giant": 7
-            }
-
-            default_worker_tolerations = {
-                "0": {
-                    "key": "k8s.dask.org_dedicated",
-                    "operator": "Equal",
-                    "value": "worker",
-                    "effect": "NoSchedule"
-                },
-                "1": {
-                    "key": "k8s.dask.org/dedicated",
-                    "operator": "Equal",
-                    "value": "worker",
-                    "effect": "NoSchedule"
-                }
-
-            }
-
-            # put scheduler in jupyter pool to make it non-preemptible
-            scheduler_tolerations = [
-                {
-                    "key": "hub.jupyter.org_dedicated",
-                    "operator": "Equal",
-                    "value": "user",
-                    "effect": "NoSchedule"
-                },
-                {
-                    "key": "hub.jupyter.org/dedicated",
-                    "operator": "Equal",
-                    "value": "user",
-                    "effect": "NoSchedule"
-                }
-
-            ]
-
-            def option_handler(options):
-                if (":" not in options.worker_image) or (":" not in options.scheduler_image):
-                    raise ValueError("When specifying an image you must also provide a tag")
-                extra_annotations = {
-                    "hub.jupyter.org/username": user.name
-                }
-                default_extra_labels = {
-                    "hub.jupyter.org/username": user.name,
-                }
-
-                this_env = options.env_items
-
-                # add extra pip packages to be picked up by prepare.sh
-                if options.extra_pip_packages != "":
-                    this_env["EXTRA_PIP_PACKAGES"] = options.extra_pip_packages
-
-                return {
-                    "worker_cores": options.cpus,
-                    # see https://github.com/dask/dask-gateway/blob/e409f0e87f45e0a51fd7c009b5ec010bc5253bf1/dask-gateway-server/dask_gateway_server/backends/kubernetes/controller.py#L1055
-                    "worker_cores_limit": ceil(options.cpus), # this is necessary to get correct nthreads
-                    "worker_memory": f"{scaling_factors[options.profile] * standard_mem:.2f}G",
-                    # setting images separately here to get a light-weight scheduler
-                    "worker_extra_container_config": {
-                        "image": options.worker_image,
-                        "securityContext": {
-                          "privileged": True # allows gcsfuse mount
-                        },
-                    },
-                    "scheduler_extra_container_config": {
-                        "image": options.scheduler_image,
-                    },
-                    "worker_extra_pod_annotations": extra_annotations,
-                    "worker_extra_pod_config": {
-                        "tolerations": list(options.worker_tolerations.values()),
-                        "serviceAccount": "jhubuser",
-                        "serviceAccountName": "jhubuser",
-                    },
-                    "worker_extra_pod_labels": {
-                        **default_extra_labels,
-                        **options.extra_worker_labels,
-                    },
-                    "scheduler_extra_pod_annotations": extra_annotations,
-                    "scheduler_extra_pod_labels": default_extra_labels,
-                    "scheduler_extra_pod_config": {
-                        "tolerations": scheduler_tolerations
-                    },
-                    "environment": this_env,
-                    "idle_timeout": options.idle_timeout,
-                    "scheduler_cores": options.scheduler_cores,
-                    "scheduler_memory": options.scheduler_memory,
-                }
-            return Options(
-                Select(
-                    "profile",
-                    ["micro", "standard", "big", "giant"],
-                    default="standard",
-                    label="Cluster Memory Size"
-                ),
-                Float("cpus", default=1.0, min=1.0, max=7.0, label="Worker CPUs"),
-                String("worker_image", default="us-west1-docker.pkg.dev/onyx-324919/private/worker:latest", label="Worker Image"),
-                String("scheduler_image", default="us-west1-docker.pkg.dev/onyx-324919/private/scheduler:latest", label="Scheduler Image"),
-                String("extra_pip_packages", default="", label="Extra pip Packages"),
-                String("gcsfuse_tokens", default="", label="GCSFUSE Tokens"),
-                String("cred_name", default="", label="Bucket for Google Cloud Creds"),
-                Mapping("worker_tolerations", default=default_worker_tolerations, label="Worker Pod Tolerations"),
-                Mapping("extra_worker_labels", default={}, label="Extra Worker Pod Labels"),
-                Mapping("env_items", default={}, label="Environment Variables"),
-                String("scheduler_memory", default="22.5 G", label="Scheduler Memory"),
-                Float("scheduler_cores", default=3.7, min=1, max=8, label="Scheduler CPUs"),
-                Float("idle_timeout", default=300, min=0, label="Idle Timeout (s)"),
-                handler=option_handler,
-            )
-        c.Backend.cluster_options = cluster_options
+  dask-gateway:
+    gateway:
+      backend:
+        worker:
+          extraPodConfig:
+            volumes:
+              - name: cil-scratch-bucket
+                persistentVolumeClaim:
+                  claimName: scratch-bucket
+          extraContainerConfig:
+            volumeMounts:
+              - name: cil-scratch-bucket
+                mountPath: /gcs/impactlab-data-scratch
+      extraConfig:
+        optionHandler: |
+          from dask_gateway_server.options import Options, String, Select, Mapping, Float
+          from math import ceil
+  
+          def cluster_options(user):
+              standard_mem = 6.4
+              scaling_factors = {
+                  "micro": 1,
+                  "standard": 1.75,
+                  "big": 3.5,
+                  "giant": 7
+              }
+  
+              default_worker_tolerations = {
+                  "0": {
+                      "key": "k8s.dask.org_dedicated",
+                      "operator": "Equal",
+                      "value": "worker",
+                      "effect": "NoSchedule"
+                  },
+                  "1": {
+                      "key": "k8s.dask.org/dedicated",
+                      "operator": "Equal",
+                      "value": "worker",
+                      "effect": "NoSchedule"
+                  }
+  
+              }
+  
+              # put scheduler in jupyter pool to make it non-preemptible
+              scheduler_tolerations = [
+                  {
+                      "key": "hub.jupyter.org_dedicated",
+                      "operator": "Equal",
+                      "value": "user",
+                      "effect": "NoSchedule"
+                  },
+                  {
+                      "key": "hub.jupyter.org/dedicated",
+                      "operator": "Equal",
+                      "value": "user",
+                      "effect": "NoSchedule"
+                  }
+  
+              ]
+  
+              def option_handler(options):
+                  if (":" not in options.worker_image) or (":" not in options.scheduler_image):
+                      raise ValueError("When specifying an image you must also provide a tag")
+                  extra_annotations = {
+                      "hub.jupyter.org/username": user.name
+                  }
+                  default_extra_labels = {
+                      "hub.jupyter.org/username": user.name,
+                  }
+  
+                  this_env = options.env_items
+  
+                  # add extra pip packages to be picked up by prepare.sh
+                  if options.extra_pip_packages != "":
+                      this_env["EXTRA_PIP_PACKAGES"] = options.extra_pip_packages
+  
+                  return {
+                      "worker_cores": options.cpus,
+                      # see https://github.com/dask/dask-gateway/blob/e409f0e87f45e0a51fd7c009b5ec010bc5253bf1/dask-gateway-server/dask_gateway_server/backends/kubernetes/controller.py#L1055
+                      "worker_cores_limit": ceil(options.cpus), # this is necessary to get correct nthreads
+                      "worker_memory": f"{scaling_factors[options.profile] * standard_mem:.2f}G",
+                      # setting images separately here to get a light-weight scheduler
+                      "worker_extra_container_config": {
+                          "image": options.worker_image,
+                          "securityContext": {
+                            "privileged": True # allows gcsfuse mount
+                          },
+                      },
+                      "scheduler_extra_container_config": {
+                          "image": options.scheduler_image,
+                      },
+                      "worker_extra_pod_annotations": extra_annotations,
+                      "worker_extra_pod_config": {
+                          "tolerations": list(options.worker_tolerations.values()),
+                          "serviceAccount": "jhubuser",
+                          "serviceAccountName": "jhubuser",
+                      },
+                      "worker_extra_pod_labels": {
+                          **default_extra_labels,
+                          **options.extra_worker_labels,
+                      },
+                      "scheduler_extra_pod_annotations": extra_annotations,
+                      "scheduler_extra_pod_labels": default_extra_labels,
+                      "scheduler_extra_pod_config": {
+                          "tolerations": scheduler_tolerations
+                      },
+                      "environment": this_env,
+                      "idle_timeout": options.idle_timeout,
+                      "scheduler_cores": options.scheduler_cores,
+                      "scheduler_memory": options.scheduler_memory,
+                  }
+              return Options(
+                  Select(
+                      "profile",
+                      ["micro", "standard", "big", "giant"],
+                      default="standard",
+                      label="Cluster Memory Size"
+                  ),
+                  Float("cpus", default=1.0, min=1.0, max=7.0, label="Worker CPUs"),
+                  String("worker_image", default="us-west1-docker.pkg.dev/onyx-324919/private/worker:latest", label="Worker Image"),
+                  String("scheduler_image", default="us-west1-docker.pkg.dev/onyx-324919/private/scheduler:latest", label="Scheduler Image"),
+                  String("extra_pip_packages", default="", label="Extra pip Packages"),
+                  String("gcsfuse_tokens", default="", label="GCSFUSE Tokens"),
+                  String("cred_name", default="", label="Bucket for Google Cloud Creds"),
+                  Mapping("worker_tolerations", default=default_worker_tolerations, label="Worker Pod Tolerations"),
+                  Mapping("extra_worker_labels", default={}, label="Extra Worker Pod Labels"),
+                  Mapping("env_items", default={}, label="Environment Variables"),
+                  String("scheduler_memory", default="22.5 G", label="Scheduler Memory"),
+                  Float("scheduler_cores", default=3.7, min=1, max=8, label="Scheduler CPUs"),
+                  Float("idle_timeout", default=300, min=0, label="Idle Timeout (s)"),
+                  handler=option_handler,
+              )
+          c.Backend.cluster_options = cluster_options
