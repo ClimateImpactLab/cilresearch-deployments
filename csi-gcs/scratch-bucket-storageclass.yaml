@@ -3,4 +3,3 @@ kind: StorageClass
 metadata:
   name: scratch-bucket
 provisioner: gcs.csi.ofek.dev
-volumeBindingMode: WaitForFirstConsumer
