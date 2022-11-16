@@ -20,7 +20,7 @@ daskhub:
         extraVolumes:
           - name: cil-scratch-bucket
             persistentVolumeClaim:
-              claimName: csi-gcs-scratch
+              claimName: scratch-bucket
         extraVolumeMounts:
           - name: cil-scratch-bucket
             mountPath: /gcs/impactlab-data-scratch
