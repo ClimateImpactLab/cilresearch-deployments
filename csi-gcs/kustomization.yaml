@@ -1,13 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-  "app.kubernetes.io/part-of": "csi-gcs"
-
 resources:
   - https://github.com/ofek/csi-gcs//deploy/overlays/stable-gke?ref=v0.9.0
   - impactlab-data-scratch-persistentvolume.yaml
   - scratch-bucket-storageclass.yaml
-
-patchesStrategicMerge:
-  - patches/csi-gcs-serviceaccount.yaml
