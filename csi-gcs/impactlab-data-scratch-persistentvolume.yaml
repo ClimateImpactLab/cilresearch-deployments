@@ -12,3 +12,6 @@ spec:
   csi:
     driver: gcs.csi.ofek.dev
     volumeHandle: impactlab-data-scratch
+    nodePublishSecretRef:
+      name: csi-gcs-secret
+      namespace: jhub
