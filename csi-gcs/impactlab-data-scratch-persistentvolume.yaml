@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: impactlab-data-scratch
+spec:
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 100Pi
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: scratch-bucket
+  mountOptions:
+    - "--dir-mode=0666"
+    - "--file-mode=0666"
+  csi:
+    driver: gcs.csi.ofek.dev
+    volumeHandle: impactlab-data-scratch
+    nodePublishSecretRef:
+      name: csi-gcs-secret
+      namespace: jhub
