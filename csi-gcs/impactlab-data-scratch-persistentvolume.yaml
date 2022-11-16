@@ -14,4 +14,4 @@ spec:
     volumeHandle: impactlab-data-scratch
     nodePublishSecretRef:
       name: csi-gcs-secret
-      namespace: jhub
+      namespace: kube-system
