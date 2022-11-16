@@ -8,6 +8,8 @@ metadata:
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
   annotations:
+    gcs.csi.ofek.dev/bucket: impactlab-data-scratch
+    gcs.csi.ofek.dev/project-id: compute-impactlab
     gcs.csi.ofek.dev/dir-mode: "0777"
     gcs.csi.ofek.dev/file-mode: "0666"
 spec:

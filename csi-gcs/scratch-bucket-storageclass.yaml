@@ -2,4 +2,8 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: scratch-bucket
+  annotations:
+    csi.storage.k8s.io/node-publish-secret-name: csi-gcs-secret
+    csi.storage.k8s.io/node-publish-secret-namespace: kube-system
 provisioner: gcs.csi.ofek.dev
+reclaimPolicy: Retain
