@@ -13,7 +13,7 @@ daskhub:
       # description of configuration options
       image:
         name: pangeo/pangeo-notebook
-        tag: "2022.10.31"
+        tag: "2022.11.03"
       startTimeout: 600
       storage:
         capacity: 10Gi
@@ -45,10 +45,6 @@ daskhub:
         - display_name: "pangeo/pangeo-notebook:2022.11.03"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2022.11.03
-        - display_name: "pangeo/pangeo-notebook:2022.10.31"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2022.10.31
-
     hub:
       resources:
         requests:
