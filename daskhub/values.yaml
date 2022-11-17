@@ -67,7 +67,7 @@ daskhub:
             - ClimateImpactLab
         OAuthenticator:
           scope:
-            - read:user
+            - read:org
       extraConfig:
         # Register Dask Gateway service and setup singleuser environment.
         00-add-dask-gateway-values: |
