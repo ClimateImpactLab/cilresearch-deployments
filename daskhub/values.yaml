@@ -129,6 +129,34 @@ daskhub:
   dask-gateway:
     gateway:
       backend:
+        image:
+          name: "pangeo/base-notebook"
+          tag: "2022.11.03"
+        environment:
+          CIL_SCRATCH_PREFIX: "gs://impactlab-data-scratch"
+          CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
+
+        scheduler:
+          cores:
+            request: "4.0"
+            limit: "8.0"
+          memory:
+            request: "22.5G"
+            limit: "22.5G"
+          extraPodConfig:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: cloud.google.com/gke-preemptible
+                          operator: DoesNotExist
+            tolerations:
+              - effect: NoSchedule
+                key: hub.jupyter.org/dedicated
+                operator: Equal
+                value: user
+
         worker:
           extraPodConfig:
             serviceAccount: "jhubuser"
