@@ -65,7 +65,6 @@ daskhub:
           oauth_callback_url: "https://notebooks.cilresearch.org/hub/oauth_callback"
           allowed_organizations:
             - ClimateImpactLab
-        OAuthenticator:
           scope:
             - read:org
       extraConfig:
