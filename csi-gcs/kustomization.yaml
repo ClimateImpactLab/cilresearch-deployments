@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
   - https://github.com/ofek/csi-gcs//deploy/overlays/stable-gke?ref=v0.9.0
+  - impactlab-data-persistentvolume.yaml
   - impactlab-data-scratch-persistentvolume.yaml
   - gcs-bucket-standard-storageclass.yaml
