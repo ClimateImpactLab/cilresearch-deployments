@@ -169,6 +169,11 @@ daskhub:
               - name: cil-data-bucket
                 persistentVolumeClaim:
                   claimName: data-bucket
+            tolerations:
+              - effect: NoSchedule
+                key: k8s.dask.org/dedicated
+                operator: Equal
+                value: worker
             affinity:
               nodeAffinity:
                 requiredDuringSchedulingIgnoredDuringExecution:
