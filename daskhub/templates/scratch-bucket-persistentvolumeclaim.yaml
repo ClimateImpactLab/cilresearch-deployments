@@ -7,13 +7,11 @@ metadata:
     chart: {{ .Chart.Name }}-{{ .Chart.Version }}
     heritage: {{ .Release.Service }}
     release: {{ .Release.Name }}
-  annotations:
-    gcs.csi.ofek.dev/dir-mode: "0777"
-    gcs.csi.ofek.dev/file-mode: "0666"
 spec:
+  storageClassName: gcs-bucket-standard
+  volumeName: impactlab-data-scratch
   accessModes:
     - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
-  storageClassName: scratch-bucket
