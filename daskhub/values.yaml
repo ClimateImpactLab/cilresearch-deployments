@@ -21,9 +21,14 @@ daskhub:
           - name: cil-scratch-bucket
             persistentVolumeClaim:
               claimName: scratch-bucket
+          - name: cil-data-bucket
+            persistentVolumeClaim:
+              claimName: data-bucket
         extraVolumeMounts:
           - name: cil-scratch-bucket
             mountPath: /gcs/impactlab-data-scratch
+          - name: cil-data-bucket
+            mountPath: /gcs/impactlab-data
       cpu:
         limit: 7
         guarantee: 7
@@ -136,7 +141,12 @@ daskhub:
               - name: cil-scratch-bucket
                 persistentVolumeClaim:
                   claimName: scratch-bucket
+              - name: cil-data-bucket
+                persistentVolumeClaim:
+                  claimName: data-bucket
           extraContainerConfig:
             volumeMounts:
               - name: cil-scratch-bucket
                 mountPath: /gcs/impactlab-data-scratch
+              - name: cil-data-bucket
+                mountPath: /gcs/impactlab-data
