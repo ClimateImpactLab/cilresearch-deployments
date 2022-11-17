@@ -139,8 +139,8 @@ daskhub:
 
         scheduler:
           cores:
-            request: "4.0"
-            limit: "8.0"
+            request: 4.0
+            limit: 8.0
           memory:
             request: "22.5G"
             limit: "22.5G"
