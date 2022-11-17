@@ -8,7 +8,10 @@ spec:
   capacity:
     storage: 100Pi
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: scratch-bucket
+  storageClassName: gcs-bucket-standard
+  mountOptions:
+    - --dir-mode=0777
+    - --file-mode=0666
   csi:
     driver: gcs.csi.ofek.dev
     volumeHandle: impactlab-data-scratch
