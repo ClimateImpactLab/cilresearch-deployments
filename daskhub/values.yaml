@@ -140,6 +140,15 @@ daskhub:
               - name: cil-data-bucket
                 persistentVolumeClaim:
                   claimName: data-bucket
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                    - matchExpressions:
+                        - key: iam.gke.io/gke-metadata-server-enabled
+                          operator: In
+                          values:
+                            - "true"
           extraContainerConfig:
             volumeMounts:
               - name: cil-scratch-bucket
