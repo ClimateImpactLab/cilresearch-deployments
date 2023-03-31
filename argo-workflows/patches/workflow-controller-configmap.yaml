@@ -24,7 +24,7 @@ data:
   workflowDefaults: |
     metadata:
       labels:
-        project: cilresearch
+        workflows.cilresearch.org/project: cilresearch
     spec:
       securityContext:
         runAsNonRoot: true
