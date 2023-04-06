@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: downscalecmip6-workflows
+spec:
+  destination:
+    namespace: argo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: workflows/templates
+    repoURL: https://github.com/ClimateImpactLab/downscaleCMIP6
+    targetRevision: HEAD
