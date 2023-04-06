@@ -4,10 +4,13 @@ metadata:
   name: downscalecmip6-workflows
 spec:
   destination:
-    namespace: argo
+    namespace: downscalecmip6
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: workflows/templates
-    repoURL: https://github.com/ClimateImpactLab/downscaleCMIP6
+    path: downscalecmip6-workflows
+    repoURL: https://github.com/ClimateImpactLab/cilresearch-deployments
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
