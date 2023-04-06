@@ -1,4 +1,9 @@
 - op: add
+  path: /spec/template/spec/containers/0/env/-
+  value:
+    name: SSO_DELEGATE_RBAC_TO_NAMESPACE
+    value: "true"
+- op: add
   path: /spec/template/spec/containers/0/args/-
   value:
     --auth-mode=sso
