@@ -7,5 +7,6 @@ resources:
   - cert-manager.yaml
   - cilresearch.yaml
   - csi-gcs.yaml
+  - downscalecmip6-workflows.yaml
   - external-secrets.yaml
   - ingress-nginx.yaml
