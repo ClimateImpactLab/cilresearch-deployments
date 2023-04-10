@@ -301,7 +301,7 @@ daskhub:
                   Mapping("env_items", default={}, label="Environment Variables"),
                   String("scheduler_memory", default="22.5 G", label="Scheduler Memory"),
                   Float("scheduler_cores", default=3.7, min=1, max=8, label="Scheduler CPUs"),
-                  Float("idle_timeout", default=300, min=0, label="Idle Timeout (s)"),
+                  Float("idle_timeout", default=1200, min=0, label="Idle Timeout (s)"),
                   # AMM may become default in the future and we can remove this option
                   # or modify it to allow different policies
                   Bool("active_memory_manager", default=True, label="Enable experimental active memory manager"),
