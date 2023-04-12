@@ -11,3 +11,4 @@ Deployment repository for cilresearch.org
 | cert-manager     | [![App Status](https://cd.cilresearch.org/api/badge?name=cert-manager&revision=true)](https://cd.cilresearch.org/applications/cert-manager)         |
 | external-secrets | [![App Status](https://cd.cilresearch.org/api/badge?name=external-secrets&revision=true)](https://cd.cilresearch.org/applications/external-secrets) |
 | csi-gcs          | [![App Status](https://cd.cilresearch.org/api/badge?name=csi-gcs&revision=true)](https://cd.cilresearch.org/applications/csi-gcs)                   |
+| downscalecmip6-workflows | [![App Status](https://cd.cilresearch.org/api/badge?name=downscalecmip6-workflows&revision=true)](https://cd.cilresearch.org/applications/downscalecmip6-workflows)|
