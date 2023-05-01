@@ -298,7 +298,7 @@ daskhub:
                   ),
                   Float("cpus", default=1.0, min=1.0, max=7.0, label="Worker CPUs"),
                   String("worker_image", default="pangeo/pangeo-notebook:2023.04.15", label="Worker Image"),
-                  String("scheduler_image", default="pangeo/base-notebook:2023.04.15", label="Scheduler Image"),
+                  String("scheduler_image", default="pangeo/pangeo-notebook:2023.04.15", label="Scheduler Image"),
                   String("extra_pip_packages", default="", label="Extra pip Packages"),
                   String("gcsfuse_tokens", default="", label="GCSFUSE Tokens"),
                   String("cred_name", default="", label="Bucket for Google Cloud Creds"),
