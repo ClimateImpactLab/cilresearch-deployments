@@ -28,7 +28,7 @@ data:
     spec:
       securityContext:
         runAsNonRoot: true
-        runAsUser: 8737  #; Work as non-root user.
+        runAsUser: 1000  #; Work as non-root user.
       parallelism: 300
       activeDeadlineSeconds: 28800  #; Workflows must finish in 8 hours.
       ttlStrategy:
