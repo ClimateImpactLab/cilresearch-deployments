@@ -11,6 +11,6 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v2.7.11/manifests/ha/install.yaml
 
 patchesStrategicMerge:
-  - overlays/argocd-dex-server-deployment.yaml
-  - overlays/argocd-cm.yaml
-  - overlays/argocd-rbac-cm.yaml
+  - patches/argocd-dex-server-deployment.yaml
+  - patches/argocd-cm.yaml
+  - patches/argocd-rbac-cm.yaml

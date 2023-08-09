@@ -7,4 +7,4 @@ resources:
   - resources/letsencrypt-staging-clusterissuer.yaml
 
 patchesStrategicMerge:
-  - overlays/cert-manager-sa.yaml
+  - patches/cert-manager-sa.yaml
