@@ -26,16 +26,20 @@ data:
       labels:
         workflows.cilresearch.org/project: cilresearch
     spec:
+      serviceAccountName: workflow
+      executor:
+        serviceAccountName: workflow
       securityContext:
         runAsNonRoot: true
-        runAsUser: 1000  #; Work as non-root user.
+        runAsUser: 1000
+        runAsGroup: 1000
+      automountServiceAccountToken: false
       parallelism: 300
-      activeDeadlineSeconds: 28800  #; Workflows must finish in 8 hours.
+      activeDeadlineSeconds: 604800  #; Workflows must finish in 7 days.
       ttlStrategy:
         secondsAfterCompletion: 604800   #; Workflows delete after 7 days.
       podGC:
         strategy: OnPodCompletion
-      serviceAccountName: workflow
       tolerations:
       - key: "dedicated"
         operator: "Equal"
@@ -54,6 +58,39 @@ data:
                   operator: In
                   values:
                     - "true"
+  mainContainer: |
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 128Mi
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
+  executor: |
+    imagePullPolicy: IfNotPresent
+    resources:
+      requests:
+        cpu: 100m
+        memory: 64Mi
+      limits:
+        cpu: 500m
+        memory: 1Gi
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 8737
+      runAsGroup: 8737
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop:
+          - ALL
 
   artifactRepository: |
     archiveLogs: true
@@ -97,15 +134,6 @@ data:
       # sslMode must be one of: disable, require, verify-ca, verify-full
       # you can find more information about those ssl options here: https://godoc.org/github.com/lib/pq
       sslMode: require
-
-  executor: |
-    resources:
-      requests:
-        cpu: 100m
-        memory: 64Mi
-      limits:
-        cpu: 500m
-        memory: 1Gi
 
   sso: |
     # This is the root URL of the OIDC provider (required).
