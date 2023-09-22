@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jhub-impactlab-data-scratch-pv
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 100Pi
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: cil-us-west1-scratch
+  claimRef:
+    namespace: {{ .Release.Namespace }}
+    name: impactlab-data-scratch-pvc
+  mountOptions:
+    - --dir-mode=0777
+    - --file-mode=0666
+  csi:
+    driver: gcsfuse.csi.storage.gke.io
+    volumeHandle: impactlab-data-scratch
+    readOnly: false
