@@ -17,8 +17,8 @@ spec:
     namespace: {{ .Release.Namespace }}
     name: impactlab-data-scratch-pvc
   mountOptions:
-    - --dir-mode=0777
-    - --file-mode=0666
+    - dir-mode=0777
+    - file-mode=0666
   csi:
     driver: gcsfuse.csi.storage.gke.io
     volumeHandle: impactlab-data-scratch
