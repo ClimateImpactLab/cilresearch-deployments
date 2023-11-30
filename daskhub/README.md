@@ -12,7 +12,7 @@ If daskhub does not already exist on the cluster, and is not managed by ArgoCD, 
 
 First, you need to ensure that you have `argocd` CLI installed and configured for the cluster. If you open a terminal and type `argocd app list` you should see an updated list of live deployments.
 
-Deploy daskhub fresh with `argocd`, automated syncing and pruning with:
+Deploy daskhub fresh with `argocd` with:
 
 ```bash
 argocd app create daskhub \
@@ -25,9 +25,6 @@ argocd app create daskhub \
     --parameter daskhub.jupyterhub.hub.services.dask-gateway.apiToken=$(gcloud secrets versions access latest --secret="daskgateway_api_token" --project cilresearch) \
     --dest-server https://kubernetes.default.svc \
     --dest-namespace "jhub" \
-    --sync-option CreateNamespace=true \
-    --sync-policy automated \
-    --auto-prune \
-    --self-heal
+    --sync-option CreateNamespace=true
 
 ```
