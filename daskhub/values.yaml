@@ -156,6 +156,7 @@ daskhub:
           matchNodePurpose: require
     cull:
       timeout: 259200
+      maxAge: 1209600
 
     proxy:
       https:
