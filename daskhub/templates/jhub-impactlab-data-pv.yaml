@@ -19,6 +19,7 @@ spec:
   mountOptions:
     - dir-mode=0777
     - file-mode=0666
+    - implicit-dirs
   csi:
     driver: gcsfuse.csi.storage.gke.io
     volumeHandle: impactlab-data
