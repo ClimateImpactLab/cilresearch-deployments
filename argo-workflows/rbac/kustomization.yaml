@@ -8,3 +8,4 @@ resources:
   - workflow-role.yaml
   - workflow-rolebinding.yaml
   - workflow-serviceaccount.yaml
+  - workflow-secret.yaml
