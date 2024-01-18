@@ -8,4 +8,5 @@ resources:
   - cilresearch.yaml
   - downscalecmip6-workflows.yaml
   - external-secrets.yaml
+  - fastimpact.yaml
   - ingress-nginx.yaml
