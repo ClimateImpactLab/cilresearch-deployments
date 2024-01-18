@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fastimpact
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: kubernetes/
+    repoURL: 'https://gitlab.com/ClimateImpactLab/Impacts/fastimpact.git'
+    targetRevision: HEAD
+  project: default
