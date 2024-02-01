@@ -108,7 +108,7 @@ data:
     # save completed workloads to the workflow archive
     archive: true
     # the number of days to keep archived workflows (the default is forever)
-    archiveTTL: 180d
+    archiveTTL: 730d
     # skip database migration if needed.
     # skipMigration: true
     # LabelSelector determines the workflow that matches with the matchlabels or matchrequirements, will be archived.
