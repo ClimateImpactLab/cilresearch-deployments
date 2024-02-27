@@ -76,6 +76,9 @@ daskhub:
         - display_name: "pangeo/pangeo-notebook:2023.02.27"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2023.02.27
+        - display_name: "pangeo/pangeo-notebook:2023.02.08"
+          kubespawner_override:
+            image: pangeo/pangeo-notebook:2023.02.08
     hub:
       resources:
         requests:
