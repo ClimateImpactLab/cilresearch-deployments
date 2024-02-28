@@ -14,7 +14,7 @@ spec:
   tls:
     - hosts:
         - cd.cilresearch.org
-      secretName: argocd-secret
+      secretName: argocd-server-tls
   rules:
     - host: cd.cilresearch.org
       http:
