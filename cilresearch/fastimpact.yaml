@@ -11,5 +11,5 @@ spec:
   source:
     path: kubernetes/
     repoURL: 'https://gitlab.com/ClimateImpactLab/Impacts/fastimpact.git'
-    targetRevision: v3.2.1
+    targetRevision: v3.2.2
   project: default
