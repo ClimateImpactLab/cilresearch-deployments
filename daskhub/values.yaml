@@ -275,7 +275,6 @@ daskhub:
                       "worker_extra_pod_annotations": extra_annotations,
                       "worker_extra_pod_config": {
                           "tolerations": list(options.worker_tolerations.values()),
-                          "serviceAccount": "jhubuser",
                           "serviceAccountName": "jhubuser",
                           "volumes": [
                               {"name": "cil-scratch-bucket", "persistentVolumeClaim": {"claimName": "impactlab-data-scratch-pvc"}},
@@ -307,7 +306,6 @@ daskhub:
                       "scheduler_extra_pod_labels": default_extra_labels,
                       "scheduler_extra_pod_config": {
                           "tolerations": scheduler_tolerations,
-                          "serviceAccount": "jhubuser",
                           "serviceAccountName": "jhubuser",
                           "affinity": {
                               "nodeAffinity": {
