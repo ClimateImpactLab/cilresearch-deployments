@@ -307,6 +307,8 @@ daskhub:
                       "scheduler_extra_pod_labels": default_extra_labels,
                       "scheduler_extra_pod_config": {
                           "tolerations": scheduler_tolerations,
+                          "serviceAccount": "jhubuser",
+                          "serviceAccountName": "jhubuser",
                           "affinity": {
                               "nodeAffinity": {
                                   "requiredDuringSchedulingIgnoredDuringExecution": {
