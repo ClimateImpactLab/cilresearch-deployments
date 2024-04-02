@@ -35,6 +35,9 @@ daskhub:
       memory:
         limit: 45G
         guarantee: 45G
+      extraResource:
+        limits:
+          ephemeral-storage: "20Gi"
       cloudMetadata:
         blockWithIptables: false
       serviceAccountName: jhubuser
