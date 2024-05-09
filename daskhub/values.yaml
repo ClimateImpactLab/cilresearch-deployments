@@ -54,51 +54,15 @@ daskhub:
           kubespawner_override:
             image: pangeo/pangeo-notebook:2024.02.27
           default: true
-        - display_name: "pangeo/pangeo-notebook:2024.02.21"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.02.21
-        - display_name: "pangeo/pangeo-notebook:2024.02.02"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.02.02
-        - display_name: "pangeo/pangeo-notebook:2024.01.23"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.01.23
-        - display_name: "pangeo/pangeo-notebook:2024.01.15"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.01.15
-        - display_name: "pangeo/pangeo-notebook:2024.01.03"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.01.03
-        - display_name: "pangeo/pangeo-notebook:2023.12.17"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.12.17
-        - display_name: "pangeo/pangeo-notebook:2023.12.03"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.12.03
-        - display_name: "pangeo/pangeo-notebook:2023.11.22"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.11.22
         - display_name: "pangeo/pangeo-notebook:2023.11.14"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2023.11.14
-        - display_name: "pangeo/pangeo-notebook:2023.10.28"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.10.28
-        - display_name: "pangeo/pangeo-notebook:2023.10.24"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.10.24
-        - display_name: "pangeo/pangeo-notebook:2023.10.22"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2023.10.22
         - display_name: "pangeo/pangeo-notebook:2023.02.27"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2023.02.27
         - display_name: "pangeo/pangeo-notebook:2023.02.08"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2023.02.08
-        - display_name: "ghcr.io/rocker-org/binder:4.3.2"
-          kubespawner_override:
-            image: ghcr.io/rocker-org/binder:4.3.2
     hub:
       resources:
         requests:
