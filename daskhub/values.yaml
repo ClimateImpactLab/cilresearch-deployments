@@ -155,17 +155,14 @@ daskhub:
     gateway:
       extraConfig:
         optionHandler: |
-          from dask_gateway_server.options import Options, String, Select, Mapping, Float, Bool
+          from dask_gateway_server.options import Options, Integer, String, Select, Mapping, Float, Bool
           from math import ceil
   
           def cluster_options(user):
   
               # A mapping from profile name to configuration overrides
-              # 12/15/20: always using one core unless explicitly defined by
-              # `cpus` due to this issue: https://github.com/dask/dask-gateway/issues/364
-              # Can update this behavior if that gets addressed
-              # standard_cores = 1.0
-              standard_mem = 6.5
+              standard_cores = 1.0
+              standard_mem = 6.25
               scaling_factors = {
                   "micro": 1,
                   "standard": 1.75,
@@ -230,12 +227,16 @@ daskhub:
   
                   # calculate cpu request and limit
                   # see above comment for why we are commenting out standard_cores for now
-                  # cpu_req = scaling_factors[options.profile] * standard_cores
+                  if options.cpus == 0.0:
+                      cpu_req = scaling_factors[options.profile] * standard_cores
+                  else:
+                      cpu_req = options.cpus
   
                   return {
-                      "worker_cores": options.cpus,
+                      "worker_cores": cpu_req,
                       # see https://github.com/dask/dask-gateway/blob/e409f0e87f45e0a51fd7c009b5ec010bc5253bf1/dask-gateway-server/dask_gateway_server/backends/kubernetes/controller.py#L1055
-                      "worker_cores_limit": ceil(options.cpus), # this is necessary to get correct nthreads
+                      "worker_cores_limit": ceil(cpu_req),
+                      "worker_threads": options.worker_threads,
                       "worker_memory": f"{scaling_factors[options.profile] * standard_mem:.2f}G",
                       # setting images separately here to get a light-weight scheduler
                       "worker_extra_container_config": {
@@ -311,7 +312,8 @@ daskhub:
                       default="standard",
                       label="Cluster Memory Size"
                   ),
-                  Float("cpus", default=1.0, min=1.0, max=7.0, label="Worker CPUs"),
+                  Float("cpus", default=0.0, min=0.0, max=7.0, label="Worker CPUs"),
+                  Integer("worker_threads", default=1, min=1, max=7, label="Dask Threads per Worker"),
                   String("worker_image", default="pangeo/pangeo-notebook:2024.05.07", label="Worker Image"),
                   String("scheduler_image", default="pangeo/pangeo-notebook:2024.05.07", label="Scheduler Image"),
                   String("extra_pip_packages", default="", label="Extra pip Packages"),
