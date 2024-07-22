@@ -50,10 +50,13 @@ daskhub:
         CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
         DASK_GATEWAY__PUBLIC_ADDRESS: "https://notebooks.cilresearch.org/services/dask-gateway"
       profileList:
+        - display_name: "pangeo/pangeo-notebook:2024.07.08"
+          kubespawner_override:
+            image: pangeo/pangeo-notebook:2024.07.08
+          default: true
         - display_name: "pangeo/pangeo-notebook:2024.05.07"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2024.05.07
-          default: true
         - display_name: "pangeo/pangeo-notebook:2024.02.27"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2024.02.27
@@ -308,8 +311,8 @@ daskhub:
                   ),
                   Float("cpus", default=0.0, min=0.0, max=7.0, label="Worker CPUs"),
                   Integer("worker_threads", default=1, min=1, max=7, label="Dask Threads per Worker"),
-                  String("worker_image", default="pangeo/pangeo-notebook:2024.05.07", label="Worker Image"),
-                  String("scheduler_image", default="pangeo/pangeo-notebook:2024.05.07", label="Scheduler Image"),
+                  String("worker_image", default="pangeo/pangeo-notebook:2024.07.08", label="Worker Image"),
+                  String("scheduler_image", default="pangeo/pangeo-notebook:2024.07.08", label="Scheduler Image"),
                   String("extra_pip_packages", default="", label="Extra pip Packages"),
                   String("gcsfuse_tokens", default="", label="GCSFUSE Tokens"),
                   String("cred_name", default="", label="Bucket for Google Cloud Creds"),
