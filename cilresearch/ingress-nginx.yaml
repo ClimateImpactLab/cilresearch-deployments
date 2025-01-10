@@ -18,8 +18,8 @@ spec:
         controller:
           autoscaling:
             enabled: true
-            minReplicas: 3
-            maxReplicas: 8
+            minReplicas: 1
+            maxReplicas: 4
   ignoreDifferences:
   - group: autoscaling
     kind: HorizontalPodAutoscaler
