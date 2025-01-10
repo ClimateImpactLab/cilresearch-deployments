@@ -20,6 +20,7 @@ spec:
             enabled: true
             minReplicas: 1
             maxReplicas: 4
+            targetMemoryUtilizationPercentage: 60
   ignoreDifferences:
   - group: autoscaling
     kind: HorizontalPodAutoscaler
