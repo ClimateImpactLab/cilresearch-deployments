@@ -18,8 +18,8 @@ data:
   # This is intended to mitigate flooding of the Kubernetes API server by workflows with a large amount of
   # parallel nodes.
   resourceRateLimit: |
-    limit: 1000
-    burst: 500
+    limit: 200
+    burst: 100
 
   workflowDefaults: |
     metadata:
