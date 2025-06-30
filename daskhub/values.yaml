@@ -50,10 +50,13 @@ daskhub:
         CIL_SCRATCH_BUCKET: "impactlab-data-scratch"
         DASK_GATEWAY__PUBLIC_ADDRESS: "https://notebooks.cilresearch.org/services/dask-gateway"
       profileList:
+        - display_name: "pangeo/pangeo-notebook:2025.06.02"
+          kubespawner_override:
+            image: pangeo/pangeo-notebook:2025.06.02@sha256:fc2ff2616dd51de5b18490eb06b68e9bcc369e13b12929fce092f43208d83f34
+          default: true
         - display_name: "pangeo/pangeo-notebook:2025.05.22"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2025.05.22@sha256:827fe09190d9edfb759b71de566b7e6de2382a0d14551e3e51c1f69f12ceac9c
-          default: true
         - display_name: "pangeo/pangeo-notebook:2025.01.24"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2025.01.24@sha256:b91208a79ceea3c7a1e6c785f60bdd9853e81785d245edabbd14c6f378509f80
@@ -320,8 +323,8 @@ daskhub:
                   ),
                   Float("cpus", default=0.0, min=0.0, max=7.0, label="Worker CPUs"),
                   Integer("worker_threads", default=1, min=1, max=7, label="Dask Threads per Worker"),
-                  String("worker_image", default="pangeo/pangeo-notebook:2025.05.22@sha256:827fe09190d9edfb759b71de566b7e6de2382a0d14551e3e51c1f69f12ceac9c", label="Worker Image"),
-                  String("scheduler_image", default="pangeo/pangeo-notebook:2025.05.22@sha256:827fe09190d9edfb759b71de566b7e6de2382a0d14551e3e51c1f69f12ceac9c", label="Scheduler Image"),
+                  String("worker_image", default="pangeo/pangeo-notebook:2025.06.02@sha256:fc2ff2616dd51de5b18490eb06b68e9bcc369e13b12929fce092f43208d83f34", label="Worker Image"),
+                  String("scheduler_image", default="pangeo/pangeo-notebook:2025.06.02@sha256:fc2ff2616dd51de5b18490eb06b68e9bcc369e13b12929fce092f43208d83f34", label="Scheduler Image"),
                   String("extra_pip_packages", default="", label="Extra pip Packages"),
                   String("gcsfuse_tokens", default="", label="GCSFUSE Tokens"),
                   String("cred_name", default="", label="Bucket for Google Cloud Creds"),
