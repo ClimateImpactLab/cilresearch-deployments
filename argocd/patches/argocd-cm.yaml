@@ -25,11 +25,3 @@ data:
         redirectURIs:
           - https://workflows.cilresearch.org/oauth2/callback
         secretEnv: ARGO_WORKFLOWS_SSO_CLIENT_SECRET
-  resource.exclusions: |
-    # Exclude to avoid deprecated API call. See https://github.com/argoproj/argo-cd/issues/12382
-    - apiGroups:
-      - policy
-      kinds:
-      - PodSecurityPolicy
-      clusters:
-      - "*"
