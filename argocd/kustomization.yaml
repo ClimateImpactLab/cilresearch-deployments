@@ -8,7 +8,7 @@ resources:
   - resources/cilresearch-secretstore.yaml
   - resources/letsencrypt-prod-issuer.yaml
   - resources/sso-client-externalsecret.yaml
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v3.0.12/manifests/ha/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.8/manifests/ha/install.yaml
 
 patchesStrategicMerge:
   - patches/argocd-dex-server-deployment.yaml
