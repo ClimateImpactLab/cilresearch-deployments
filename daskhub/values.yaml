@@ -57,24 +57,9 @@ daskhub:
         - display_name: "pangeo/pangeo-notebook:2025.06.02"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2025.06.02@sha256:fc2ff2616dd51de5b18490eb06b68e9bcc369e13b12929fce092f43208d83f34
-        - display_name: "pangeo/pangeo-notebook:2025.05.22"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2025.05.22@sha256:827fe09190d9edfb759b71de566b7e6de2382a0d14551e3e51c1f69f12ceac9c
-        - display_name: "pangeo/pangeo-notebook:2025.01.24"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2025.01.24@sha256:b91208a79ceea3c7a1e6c785f60bdd9853e81785d245edabbd14c6f378509f80
-        - display_name: "pangeo/pangeo-notebook:2025.01.10"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2025.01.10@sha256:98e220cef34c81cfe9bcfdcb97549edf671604b1d72c3e8828dc613b896a67d5
         - display_name: "pangeo/pangeo-notebook:2024.11.11"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2024.11.11@sha256:16ac7877726fc5ac25070f863a901945ae678e11a299585f3c404cb3d3a34a24
-        - display_name: "pangeo/pangeo-notebook:2024.07.08"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.07.08@sha256:49bd4743adf9c14652968fe007f518ca334195f53742a8b3273850238d763e62
-        - display_name: "pangeo/pangeo-notebook:2024.02.27"
-          kubespawner_override:
-            image: pangeo/pangeo-notebook:2024.02.27@sha256:bb8adc8a6495c4f337f9b5f7ff426561dcaa428cb46e9fc4801684c28be7bb24
         - display_name: "pangeo/pangeo-notebook:2023.02.27"
           kubespawner_override:
             image: pangeo/pangeo-notebook:2023.02.27@sha256:7fc74d16de4dce36085a932815ff5fe64ab6bd59cd5f86264275edcca4ec40ac
